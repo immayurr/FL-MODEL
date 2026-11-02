@@ -1,0 +1,27 @@
+data:
+  raw_dir: data/raw/brain_tumor
+  partitions_dir: data/partitions
+  classes:
+    - glioma
+    - meningioma
+    - pituitary
+    - no_tumor
+  val_split_ratio: 0.2      # fraction of training images reserved for validation
+  num_clients: 2
+  seed: 42
+
+model:
+  input_size: 128           # spatial dimension fed to the CNN
+  num_classes: 4
+
+training:
+  num_rounds: 30            # federated communication rounds
+  local_epochs: 5           # local epochs per round per client
+  batch_size: 8
+  learning_rate: 0.0001
+  device: cuda               # change to "cuda" if a GPU is available else "cpu"
+
+results:
+  log_dir: results/logs
+  model_dir: results/models
+  plot_dir: results/plots
